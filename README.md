@@ -92,7 +92,7 @@ public struct Recipe {
 }
 ```
 
-`Recipe.todo` only coincidentally has a `struct` of the same name declared inside of it. The `struct` `Recipe` would be used to render some directions and ingredients in a web application, perhaps. The constructor takes in directions and ingredients, and then has a `pure` render function which renders the HTML to display the two instance variables together. A caller who has imported this `struct` would call `let recipe = Recipe("Cook it", [new Ingredient("bacon")]` to create an instance of a recipe struct.
+`Recipe.todo` only coincidentally has a `struct` of the same name declared inside of it. The `struct` `Recipe` would be used to render some directions and ingredients in a web application, perhaps. The constructor takes in directions and ingredients, and then has a `pure` render function which renders the HTML to display the two instance variables together. A caller who has imported this `struct` would call `let recipe = Recipe("Cook it", [Ingredient("bacon")]` to create an instance of a recipe struct.
 
 ### 1.4 Types and Variables
 
@@ -187,8 +187,6 @@ Conceptually speaking, a program is compiled using three steps:
 2. Lexical analysis, which translates a stream of Unicode input characters into a stream of tokens.
 3. Syntactic analysis, which translates the stream of tokens into executable code.
 
-Todo also offer a REPL (read, evaluate, print, loop) that acts like an ML REPL. It offers a short circuit version of the steps described above.
-
 ### 2.2 Grammars
 
 #### 2.2.1 Lexical grammar in Todo differing from Java and Swift
@@ -200,7 +198,7 @@ letter -> "A"..."Z"
 
 decimal -> "0"..."9".
 
-identifier -> <letter>([<letter> | decimal])+
+identifier -> <letter>([<letter> | decimal])*
 
 integer_literal -> <decimal>
                 -> <decimal><integer_literal>

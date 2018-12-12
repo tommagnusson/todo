@@ -337,7 +337,7 @@ $ hello world
     <span class="token comment">// I&apos;m assigning the render function to be its toString function as well</span>
     <span class="token keyword">public</span> <span class="token keyword">override</span> pure <span class="token builtin">toString</span> <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>render
 <span class="token punctuation">}</span>
-</pre><p><code>Recipe.todo</code> only coincidentally has a <code>struct</code> of the same name declared inside of it. The <code>struct</code> <code>Recipe</code> would be used to render some directions and ingredients in a web application, perhaps. The constructor takes in directions and ingredients, and then has a <code>pure</code> render function which renders the HTML to display the two instance variables together. A caller who has imported this <code>struct</code> would call <code>let recipe = Recipe(&quot;Cook it&quot;, [new Ingredient(&quot;bacon&quot;)]</code> to create an instance of a recipe struct.</p>
+</pre><p><code>Recipe.todo</code> only coincidentally has a <code>struct</code> of the same name declared inside of it. The <code>struct</code> <code>Recipe</code> would be used to render some directions and ingredients in a web application, perhaps. The constructor takes in directions and ingredients, and then has a <code>pure</code> render function which renders the HTML to display the two instance variables together. A caller who has imported this <code>struct</code> would call <code>let recipe = Recipe(&quot;Cook it&quot;, [Ingredient(&quot;bacon&quot;)]</code> to create an instance of a recipe struct.</p>
 <h3 class="mume-header" id="14-types-and-variables">1.4 Types and Variables</h3>
 
 <p>Todo offers two main flavors of types: <code>struct</code> and <code>class</code>.</p>
@@ -399,7 +399,6 @@ let anonymous <span class="token operator">=</span> <span class="token punctuati
 <li>Lexical analysis, which translates a stream of Unicode input characters into a stream of tokens.</li>
 <li>Syntactic analysis, which translates the stream of tokens into executable code.</li>
 </ol>
-<p>Todo also offer a REPL (read, evaluate, print, loop) that acts like an ML REPL. It offers a short circuit version of the steps described above.</p>
 <h3 class="mume-header" id="22-grammars">2.2 Grammars</h3>
 
 <h4 class="mume-header" id="221-lexical-grammar-in-todo-differing-from-java-and-swift">2.2.1 Lexical grammar in Todo differing from Java and Swift</h4>
@@ -410,7 +409,7 @@ letter -&gt; &quot;A&quot;...&quot;Z&quot;
 
 decimal -&gt; &quot;0&quot;...&quot;9&quot;.
 
-identifier -&gt; &lt;letter&gt;([&lt;letter&gt; | decimal])+
+identifier -&gt; &lt;letter&gt;([&lt;letter&gt; | decimal])*
 
 integer_literal -&gt; &lt;decimal&gt;
                 -&gt; &lt;decimal&gt;&lt;integer_literal&gt;
